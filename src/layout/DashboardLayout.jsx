@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
 export default function DashboardLayout() {
+  const { logout } = useAuth();
   const linkClass = ({ isActive }) =>
     `px-4 py-3 rounded-xl transition ${
       isActive
@@ -40,8 +42,12 @@ export default function DashboardLayout() {
               Manage reservations and customers
             </p>
           </div>
-
-          <div className="w-11 h-11 rounded-full bg-orange-500"></div>
+          <button
+            onClick={logout}
+            className="bg-orange-500 px-5 py-2 rounded-xl"
+          >
+            Logout
+          </button>{" "}
         </header>
 
         <div className="p-10">
